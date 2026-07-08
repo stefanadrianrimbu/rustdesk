@@ -254,7 +254,7 @@ jobs:
         shell: bash
         run: |
           sed -i 's/"rs-ny.rustdesk.com"/"pass.vec.ro"/g' libs/hbb_common/src/config.rs
-          sed -i 's/"OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw="/"AICI_PUI_CHEIA_TA"/g' libs/hbb_common/src/config.rs
+          sed -i 's/"OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw="/"fBqu2UA2e2jiFQjih4wLQzAj8QtdFdubjJgvlQsDRJs="/g' libs/hbb_common/src/config.rs
       - name: Build rustdesk
         run: |
           # Windows: build RustDesk
