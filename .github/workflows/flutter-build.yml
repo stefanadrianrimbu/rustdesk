@@ -335,7 +335,6 @@ jobs:
 
       - name: Build self-extracted executable
         shell: bash
-        if: env.UPLOAD_ARTIFACT == 'true'
         run: |
           sed -i '/dpiAware/d' res/manifest.xml
           pushd ./libs/portable
@@ -343,12 +342,13 @@ jobs:
           python3 ./generate.py -f ../../rustdesk/ -o . -e ../../rustdesk/rustdesk.exe
           popd
           mkdir -p ./SignOutput
-          mv ./target/release/rustdesk-portable-packer.exe ./SignOutput/rustdesk-${{ env.VERSION }}-${{ matrix.job.arch }}.exe
+          mv ./target/release/rustdesk-portable-packer.exe ./SignOutput/rustdesk-custom.exe
+
       - name: FORCE UPLOAD EXE
         uses: actions/upload-artifact@v4
         with:
-          name: rustdesk-windows-custom-exe
-          path: SignOutput/*.exe
+          name: rustdesk-windows-custom
+          path: ./SignOutput/rustdesk-custom.exe
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@6fb02220983dee41ce7ae257b6f4d8f9bf5ed4ce # v2
 
